@@ -1,8 +1,8 @@
-from django.urls import path, include
-from . import views
-from rest_framework import urls
+from django.urls import path
+from user.views import signup, login
 
-urlpatterns =[
-    path('signup/', views.UserCreate.as_view()),
-    path('api-auth/', include('rest_framework.urls')),
- ]
+urlpatterns = [
+    path('signup/', signup, name='signup'),
+    path('login/', login, name='login'),
+   
+]

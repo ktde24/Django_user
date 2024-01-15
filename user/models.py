@@ -69,3 +69,17 @@ class User(AbstractBaseUser):
 
     def __str__(self):
         return self.nickname
+    
+    # 사용자가 특정 권한(perm)을 가지고 있는지를 확인하는 메서드
+    def has_perm(self, perm, obj=None):
+        return True
+    
+    # 사용자가 특정 앱(app_label)에 대한 권한을 가지고 있는지 확인하는 메서드
+
+    def has_module_perms(self, app_label):
+        return True
+    
+    # 사용자가 관리자 권한을 가지고 있는지 여부를 나타내
+    @property
+    def is_staff(self):
+        return self.is_admin
