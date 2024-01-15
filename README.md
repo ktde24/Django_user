@@ -1,0 +1,1 @@
+- API 작동 확인: https://www.postman.com/
