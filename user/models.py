@@ -51,7 +51,7 @@ class User(AbstractBaseUser):
     email = models.EmailField(default='', max_length=100, null=False, blank=False, unique=True)
     nickname = models.CharField(default='', max_length=100, null=False, blank=False, unique=True)
     name = models.CharField(default='', max_length=100, null=False, blank=False)
-    phone_num = models.CharField(default='', max_length=20, null=False, blank=False)
+    phone_num = models.CharField(default='', max_length=20, null=False, blank=False, unique=True)
     child_name = models.CharField(default='', max_length=100, null=False, blank=False)
     child_birth = models.DateField(null=False, blank=False)
 
