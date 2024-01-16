@@ -44,10 +44,10 @@ def signup(request):
 @api_view(['POST'])
 @permission_classes([AllowAny])
 def login(request):
-    email = request.data.get('email')
+    nickname = request.data.get('nickname')
     password = request.data.get('password')
 
-    user = authenticate(email=email, password=password)
+    user = authenticate(nickname=nickname, password=password)
     if user is None:
         return Response({'message': '아이디 또는 비밀번호가 일치하지 않습니다.'}, status=status.HTTP_401_UNAUTHORIZED)
 
