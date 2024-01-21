@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_simplejwt',
     'user',
+    'detection_app', # dlawork9888: 디텍션앱 추가
 ]
 
 MIDDLEWARE = [
@@ -93,6 +94,16 @@ DATABASES = {
     }
 }
 '''
+# dlawork9888: DB 수정
+# 내 로컬에서 작업하기 위해 데이터베이스를 장고자체sqlite로 변경
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / "db.sqlite3",
+    }
+}
+
+"""
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
@@ -103,6 +114,7 @@ DATABASES = {
         "PORT": '3306' 
     }
 }
+"""
 
 
 # Password validation
