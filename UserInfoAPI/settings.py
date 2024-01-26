@@ -96,7 +96,7 @@ DATABASES = {
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.mysql",
-        "NAME": 'UserInfoTest',
+        "NAME": 'UserTest',
         "USER": 'root',
         "PASSWORD":'0000' ,
         "HOST": '127.0.0.1',
@@ -131,6 +131,11 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',  # JWT를 통한 인증방식 사용
     ),
+}
+# 자동 생성 필드 명을 user_id로 바꿔주면 아래 코드 필요
+SIMPLE_JWT = {
+    'USER_ID_FIELD': 'user_id',
+    'USER_ID_CLAIM': 'user_id',
 }
 REST_USE_JWT = True
 

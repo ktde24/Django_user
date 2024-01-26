@@ -47,7 +47,7 @@ class UserManager(BaseUserManager):
         return user
 
 class User(AbstractBaseUser):
-    id = models.AutoField(primary_key=True)
+    user_id = models.AutoField(primary_key=True)
     email = models.EmailField(default='', max_length=100, null=False, blank=False, unique=True)
     nickname = models.CharField(default='', max_length=100, null=False, blank=False, unique=True)
     name = models.CharField(default='', max_length=100, null=False, blank=False)
@@ -79,7 +79,8 @@ class User(AbstractBaseUser):
     def has_module_perms(self, app_label):
         return True
     
-    # 사용자가 관리자 권한을 가지고 있는지 여부를 나타내
+    # 사용자가 관리자 권한을 가지고 있는지 여부를 나타냄
     @property
     def is_staff(self):
         return self.is_admin
+    
