@@ -1,0 +1,27 @@
+name: Pull Request Webhook Notification
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  notify-webhook:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Send PR notification to webhook
+        run: |
+          curl -X POST \
+            -H "Content-Type: application/json" \
+            -d '{
+              "repository_owner": "${{ github.repository_owner }}",
+              "repository_name": "${{ github.event.repository.name }}",
+              "pull_request_number": ${{ github.event.pull_request.number }},
+              "pull_request_url": "${{ github.event.pull_request.html_url }}",
+              "action": "${{ github.event.action }}",
+              "pull_request_title": "${{ github.event.pull_request.title }}",
+              "pull_request_author": "${{ github.event.pull_request.user.login }}"
+            }' \
+            # 아래 주소를 변경해서 사용하시면 됩니다
+            "http://localhost:5678/webhook-test/2b7707a6-1eda-4bb3-aa7e-213036a950f5/webhook"  
+            
